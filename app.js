@@ -42,7 +42,7 @@ const SUITS = [
   { symbol: '♣', color: 'black-card' },
 ];
 const RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-const APP_VERSION = 'v0.005';
+const APP_VERSION = 'v0.006';
 
 let state = {
   shoe: [],
