@@ -372,3 +372,11 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   .switch-row { grid-column: span 2; }
   .range-field { grid-column: span 2; }
 }
+
+.app-version {
+  margin: -4px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: .78rem;
+  letter-spacing: .03em;
+}
