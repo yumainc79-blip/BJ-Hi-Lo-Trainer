@@ -266,7 +266,7 @@ function askForCount() {
   window.setTimeout(() => {
     els.countDialog.showModal();
     els.countInput.focus();
-  }, 160);
+  }, 520);
 }
 
 function showResult(title, message) {

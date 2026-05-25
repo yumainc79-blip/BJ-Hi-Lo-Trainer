@@ -234,12 +234,14 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   inset: 0;
   border-radius: 24px;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.18);
   box-shadow: 0 26px 70px rgba(0,0,0,.5);
 }
 
 .card-face-back {
+  transform: rotateY(0deg);
   display: grid;
   place-items: center;
   background:
@@ -349,9 +351,10 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   background: transparent;
   padding: 0;
   width: min(92vw, 420px);
+  margin: auto auto max(16px, env(safe-area-inset-bottom));
 }
 
-.count-dialog::backdrop { background: rgba(0,0,0,.72); backdrop-filter: blur(4px); }
+.count-dialog::backdrop { background: rgba(0,0,0,.35); backdrop-filter: blur(1.5px); }
 
 .count-dialog form {
   border-radius: 28px;
