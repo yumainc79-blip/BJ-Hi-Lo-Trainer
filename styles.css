@@ -227,6 +227,7 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
 }
 
 .card-button:active .playing-card { filter: brightness(1.1); }
+.playing-card { will-change: transform; }
 .playing-card.card-front { transform: rotateY(180deg); }
 
 .card-face {
@@ -241,7 +242,7 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
 }
 
 .card-face-back {
-  transform: rotateY(0deg);
+  transform: rotateY(0deg) translateZ(1px);
   display: grid;
   place-items: center;
   background:
@@ -273,7 +274,7 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
 }
 
 .card-face-front {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
   background: #f9f4ea;
   color: #101820;
   display: grid;
@@ -354,7 +355,7 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   margin: auto auto max(16px, env(safe-area-inset-bottom));
 }
 
-.count-dialog::backdrop { background: rgba(0,0,0,.35); backdrop-filter: blur(1.5px); }
+.count-dialog::backdrop { background: rgba(0,0,0,.35); backdrop-filter: none; }
 
 .count-dialog form {
   border-radius: 28px;
