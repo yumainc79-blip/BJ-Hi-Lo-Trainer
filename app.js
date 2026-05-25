@@ -31,6 +31,7 @@ const els = {
   resultTitle: document.querySelector('#resultTitle'),
   resultMessage: document.querySelector('#resultMessage'),
   resultOk: document.querySelector('#resultOk'),
+  appVersion: document.querySelector('#appVersion'),
 };
 
 const STORAGE_KEY = 'bj-hi-lo-trainer-settings-v1';
@@ -41,6 +42,7 @@ const SUITS = [
   { symbol: '♣', color: 'black-card' },
 ];
 const RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+const APP_VERSION = 'v0.004';
 
 let state = {
   shoe: [],
@@ -266,7 +268,7 @@ function askForCount() {
   window.setTimeout(() => {
     els.countDialog.showModal();
     els.countInput.focus();
-  }, 160);
+  }, 520);
 }
 
 function showResult(title, message) {
@@ -407,4 +409,8 @@ function registerServiceWorker() {
 loadSettings();
 bindEvents();
 setupNewShoe({ keepScore: false });
+if (els.appVersion) {
+  els.appVersion.textContent = `Versione app: ${APP_VERSION}`;
+}
+
 registerServiceWorker();
