@@ -260,6 +260,7 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
 }
 
 .back-pattern {
+  transform: rotateY(180deg);
   color: var(--gold);
   border: 2px solid rgba(232,184,109,.82);
   border-radius: 999px;
@@ -352,7 +353,11 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   background: transparent;
   padding: 0;
   width: min(92vw, 420px);
-  margin: auto auto calc(max(16px, env(safe-area-inset-bottom)) + 120px);
+  margin: max(16px, env(safe-area-inset-top)) auto auto;
+}
+
+.count-dialog[open] {
+  transform: translateY(-12vh);
 }
 
 .count-dialog::backdrop { background: rgba(0,0,0,.35); backdrop-filter: none; }
