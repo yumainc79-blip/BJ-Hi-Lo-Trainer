@@ -227,6 +227,7 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
 }
 
 .card-button:active .playing-card { filter: brightness(1.1); }
+.playing-card { will-change: transform; }
 .playing-card.card-front { transform: rotateY(180deg); }
 
 .card-face {
@@ -234,12 +235,14 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   inset: 0;
   border-radius: 24px;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.18);
   box-shadow: 0 26px 70px rgba(0,0,0,.5);
 }
 
 .card-face-back {
+  transform: rotateY(0deg) translateZ(1px);
   display: grid;
   place-items: center;
   background:
@@ -271,7 +274,7 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
 }
 
 .card-face-front {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
   background: #f9f4ea;
   color: #101820;
   display: grid;
@@ -349,9 +352,10 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   background: transparent;
   padding: 0;
   width: min(92vw, 420px);
+  margin: auto auto calc(max(16px, env(safe-area-inset-bottom)) + 120px);
 }
 
-.count-dialog::backdrop { background: rgba(0,0,0,.72); backdrop-filter: blur(4px); }
+.count-dialog::backdrop { background: rgba(0,0,0,.35); backdrop-filter: none; }
 
 .count-dialog form {
   border-radius: 28px;
@@ -371,4 +375,12 @@ input[role="switch"]:checked::after { transform: translateX(22px); background: v
   .settings-grid { grid-template-columns: 1fr 1fr; }
   .switch-row { grid-column: span 2; }
   .range-field { grid-column: span 2; }
+}
+
+.app-version {
+  margin: -4px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: .78rem;
+  letter-spacing: .03em;
 }
