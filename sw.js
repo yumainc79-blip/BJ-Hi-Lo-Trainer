@@ -1,10 +1,11 @@
-const CACHE_NAME = 'bj-hi-low-trainer-v01b';
+const CACHE_NAME = 'bj-hi-lo-trainer-v003';
 const ASSETS = [
   './',
   './index.html',
-  './styles.css?v=01b',
-  './app.js?v=01b',
-  './manifest.webmanifest?v=01b',
+  './styles.css',
+  './app.js',
+  './manifest.webmanifest',
+  './reset-cache.html',
   './icons/icon-192.png',
   './icons/icon-512.png'
 ];
@@ -33,8 +34,10 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put('./index.html', copy));
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put('./index.html', copy));
+          }
           return response;
         })
         .catch(() => caches.match('./index.html'))
@@ -46,8 +49,10 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const networkFetch = fetch(event.request).then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        if (response && response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        }
         return response;
       }).catch(() => cached);
       return cached || networkFetch;
