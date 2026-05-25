@@ -1,3 +1,4 @@
+
 const CACHE_NAME = 'bj-hi-lo-trainer-v003';
 const ASSETS = [
   './',
@@ -5,6 +6,7 @@ const ASSETS = [
   './styles.css',
   './app.js',
   './manifest.webmanifest',
+
   './reset-cache.html',
   './icons/icon-192.png',
   './icons/icon-512.png'
