@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'bj-hi-lo-trainer-v004';
+const CACHE_NAME = 'bj-hi-lo-trainer-v007';
 const ASSETS = [
   './',
   './index.html',

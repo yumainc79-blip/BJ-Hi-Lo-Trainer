@@ -42,7 +42,7 @@ const SUITS = [
   { symbol: '♣', color: 'black-card' },
 ];
 const RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-const APP_VERSION = 'v0.004';
+const APP_VERSION = 'v0.007';
 
 let state = {
   shoe: [],
@@ -121,6 +121,20 @@ function saveSettings() {
 function getElapsedMs() {
   if (!state.startedAt) return state.elapsedBeforePause;
   return state.elapsedBeforePause + (Date.now() - state.startedAt);
+}
+
+
+function getKeyboardInset() {
+  if (!window.visualViewport) return 0;
+  const viewport = window.visualViewport;
+  const inset = window.innerHeight - (viewport.height + viewport.offsetTop);
+  return Math.max(0, Math.round(inset));
+}
+
+function updateCountDialogPosition() {
+  const inset = getKeyboardInset();
+  const lift = inset > 0 ? Math.max(40, inset - 24) : 0;
+  document.documentElement.style.setProperty('--count-dialog-lift', `${lift}px`);
 }
 
 function formatTime(ms) {
@@ -265,6 +279,7 @@ function askForCount() {
   pauseTimer();
   updateStatsUi();
   els.countInput.value = '';
+  updateCountDialogPosition();
   window.setTimeout(() => {
     els.countDialog.showModal();
     els.countInput.focus();
@@ -379,6 +394,15 @@ function bindEvents() {
   els.countForm.addEventListener('submit', (event) => {
     event.preventDefault();
     submitAnswer();
+  });
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateCountDialogPosition);
+    window.visualViewport.addEventListener('scroll', updateCountDialogPosition);
+  }
+
+  els.countDialog.addEventListener('close', () => {
+    document.documentElement.style.setProperty('--count-dialog-lift', '0px');
   });
 
   els.resultOk.addEventListener('click', () => {

@@ -2,7 +2,7 @@
   "name": "BJ Hi-Lo Trainer",
   "short_name": "Hi-Lo BJ",
   "description": "Allenamento al conteggio carte Hi-Lo per blackjack.",
-  "start_url": "./index.html?v=0.004",
+  "start_url": "./index.html?v=0.007",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
